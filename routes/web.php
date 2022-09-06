@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// ウェルカム ページ（laravelデフォルト）
 Route::get('/', function () {
     return view('welcome');
+});
+
+// サインアップ ページ表示
+Route::get('/signup', function () {
+    return view('pages.signup');
+});
+// 新規ユーザー作成
+Route::post('/signup', [UserController::class, 'create']);
+
+
+// ホーム ページ
+Route::get('/home', function() {
+    return  view('pages.home');
 });
