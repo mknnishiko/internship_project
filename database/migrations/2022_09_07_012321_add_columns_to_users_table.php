@@ -37,8 +37,8 @@ return new class extends Migration
             $table->dropColumn('header_image');
             $table->dropColumn('icon_image');
             $table->dropColumn('user_name');
+            $table->string('account_name', 255)->change();
             $table->renameColumn('account_name', 'name');
-            $table->string('name', 255)->change();
             $table->rememberToken();
             $table->timestamp('email_verified_at')->nullable();
         });
