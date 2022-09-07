@@ -16,7 +16,7 @@ class UserController extends Controller
     public function create(CreateRequest $request, CreateUseCase $createUC)
     {
 
-        // バリデーション処理の呼び出し
+        // バリデーション済みデータの取得
         $data = $request->validated();
 
         // アカウント作成処理の呼び出し

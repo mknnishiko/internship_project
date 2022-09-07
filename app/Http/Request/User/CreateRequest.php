@@ -12,7 +12,7 @@ class CreateRequest extends FormRequest
         return[
             'account_name' => ['required', 'string', 'max:20'],
             'user_name' => ['required', 'unique:users,user_name', 'max:20', 'regex:/^@\w*/'],
-            'email' => ['required', 'email:filter'],
+            'email' => ['required', 'unique:users,email', 'email:filter'],
             'password' => ['required', 'alpha_num', Password::min(8)],
         ];
     }
