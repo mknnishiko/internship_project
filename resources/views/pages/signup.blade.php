@@ -16,30 +16,29 @@
         @endif
 
         <form action='/signup' method='POST'>
-            <div class='form_item'>
+            @csrf
+            <div class='flex-column margin-bottom-12'>
                 <label>アカウント名</label>
-                <input class='create_account_input' type='text' name='account_name' placeholder='20文字以内の自由なアカウント名'>
+                <input type='text' class='form-control' name='account_name' placeholder='20文字以内の自由なアカウント名'>
             </div>
 
-            <div class='form_item'>
+            <div class='flex-column margin-bottom-12'>
                 <label>ユーザー名</label>
-                <input class='create_account_input' type='text' name='user_name' placeholder='20文字以内英数の @ から始まるユーザー名'>
+                <input type='text' class='form-control' name='user_name' placeholder='20文字以内英数の @ から始まるユーザー名'>
             </div>
 
-            <div class='form_item'>
+            <div class='flex-column margin-bottom-12'>
                 <label>メールアドレス</label>
-                <input class='create_account_input' type='email' name='email' placeholder='あなたのメールアドレス'>
+                <input type='email' class='form-control' name='email' placeholder='あなたのメールアドレス'>
             </div>
 
-            <div class='form_item'>
+            <div class='flex-column margin-bottom-12'>
                 <label>パスワード</label>
-                <input class='create_account_input' type='text' name='password' placeholder='8文字以上英数のパスワード'>
+                <input type='text' class='form-control' name='password' placeholder='8文字以上英数のパスワード'>
             </div>
 
-            {{ csrf_field() }}
-
-            <div class='form_item'>
-                <input type='submit' value='次へ'>
+            <div class='flex-column'>
+                <input type='submit' class='btn btn-primary' value='次へ'>
             </div>
         </form>
     </div>
