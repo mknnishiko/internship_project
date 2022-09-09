@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\LogoutController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,14 +22,20 @@ Route::get('/', function () {
 });
 
 // サインアップ ページ表示
-Route::get('/signup', function () {
-    return view('pages.signup');
-});
-// 新規ユーザー作成
+Route::get('/signup', [UserController::class, 'show']);
+// サインアップ
 Route::post('/signup', [UserController::class, 'create']);
 
+// ログイン ページ表示
+Route::get('/login', [LoginController::class, 'show']);
+// ログイン
+Route::post('/login', [LoginController::class, 'login']);
 
-// ホーム ページ
+// ログアウト
+Route::get('/logout', [LogoutController::class, 'logout']);
+
+
+// ホーム ページ表示
 Route::get('/home', function() {
     return  view('pages.home');
 });
