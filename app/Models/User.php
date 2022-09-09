@@ -18,7 +18,8 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'account_name',
+        'user_name',
         'email',
         'password',
     ];
@@ -30,15 +31,15 @@ class User extends Authenticatable
      */
     protected $hidden = [
         'password',
-        'remember_token',
     ];
 
     /**
-     * The attributes that should be cast.
+     * モデルの属性のデフォルト値
      *
-     * @var array<string, string>
+     * @var array
      */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
+    protected $attributes = [
+        'icon_image' => 'no_image.png',
+        'header_image' => 'no_image.png',
     ];
 }
