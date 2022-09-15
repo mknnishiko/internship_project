@@ -14,8 +14,6 @@ return new class extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('email_verified_at');
-            $table->dropRememberToken();
             $table->string('name', 20)->change();
             $table->renameColumn('name', 'account_name');
             $table->string('user_name', 20)->unique();
@@ -39,8 +37,6 @@ return new class extends Migration
             $table->dropColumn('user_name');
             $table->string('account_name', 255)->change();
             $table->renameColumn('account_name', 'name');
-            $table->rememberToken();
-            $table->timestamp('email_verified_at')->nullable();
         });
     }
 };

@@ -11,13 +11,23 @@ use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
-    // サインアップ ページの表示
+    /**
+     * サインアップ ページの表示
+     * 
+     * @return Illuminate\Http\Response
+     */
     public function show()
     {
         return view('pages.signup');
     }
 
-    // 新規ユーザー登録
+    /**
+     * 新規ユーザー登録
+     * 
+     * @param App\Http\Request\User\CreateRequest $request
+     * @param App\UseCases\User\Create as CreateUseCase $createUC
+     * @return Illuminate\Routing\Redirector
+     */
     public function create(CreateRequest $request, CreateUseCase $createUC)
     {
 
@@ -31,6 +41,6 @@ class UserController extends Controller
         Auth::login($newUser);
 
         // リダイレクト
-        return redirect()->intended('/home');
+        return redirect('/home');
     }
 }
