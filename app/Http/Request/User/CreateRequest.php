@@ -7,6 +7,11 @@ use Illuminate\Validation\Rules\Password;
 
 class CreateRequest extends FormRequest
 {
+    /**
+     * バリデーションルール
+     * 
+     * @return array
+     */
     public function rules()
     {
         return[

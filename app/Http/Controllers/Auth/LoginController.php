@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\http\Requests\Auth\LoginRequest;
+use App\Http\Requests\Auth\LoginRequest;
 use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
@@ -20,13 +20,22 @@ class LoginController extends Controller
         //
     }
 
-    // ログイン ページの表示
+    /**
+     * ログイン ページの表示
+     * 
+     * @return \Illuminate\Http\Response
+     */
     public function show()
     {
         return view('pages.login');
     }
 
-    // ログイン処理
+    /**
+     * ログイン処理
+     * 
+     * @param App\http\Requests\Auth\LoginRequest $request
+     * @return Illuminate\Routing\Redirector
+     */
     public function login(LoginRequest $request)
     {
         // 入力情報だけ取得
@@ -45,12 +54,6 @@ class LoginController extends Controller
         Auth::login($user);
 
         // リダイレクト
-        return $this->authenticated($request, $user);
-    }
-
-    // リダイレクト処理
-    protected function authenticated(Request $request, $user)
-    {
-        return redirect()->intended('/home');
+        return redirect('/home');
     }
 }

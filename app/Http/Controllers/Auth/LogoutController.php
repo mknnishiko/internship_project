@@ -20,12 +20,24 @@ class LogoutController extends Controller
         //
     }
 
-    public function logout()
+    /**
+     * ログアウト処理
+     * 
+     * @param  \Illuminate\Http\Request  $request
+     * @return Illuminate\Routing\Redirector
+     */
+    public function logout(Request $request)
     {
-        Session::flush();
-
+        // ログアウト
         Auth::logout();
 
+        // セッションの破棄
+        $request->session()->invalidate();
+
+        // トークンの再生成
+        $request->session()->regenerateToken();
+
+        // リダイレクト
         return redirect('/login');
     }
 }
